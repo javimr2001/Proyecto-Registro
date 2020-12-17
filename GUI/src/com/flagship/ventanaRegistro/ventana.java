@@ -1,10 +1,8 @@
 package com.flagship.ventanaRegistro;
 
-import com.flagship.ventanaRegistrarse;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.security.Principal;
 
 public class ventana {
     private JPanel panel1;

@@ -1,8 +1,11 @@
-package com.flagship;
+package com.flagship.ventanaRegistro;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import com.flagship.Conector;
+import com.flagship.usuarios.usuarios;
 
 public class ventanaRegistrarse {
     public JPanel panel2;
@@ -22,6 +25,8 @@ public class ventanaRegistrarse {
     private JTextField tfUsuario;
 
     public ventanaRegistrarse() {
+
+
         btRegistrarse.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -32,16 +37,30 @@ public class ventanaRegistrarse {
                 String psswd = tfContraseña.getText();
                 String psswd2 = tfContraseña2.getText();
 
-                System.out.println("Se ha registrado " + nombre + " " + apellidos + " con usuario = " + user + " , fecha de nacimiento = " + fech_nac + " y contraseña =  " + psswd);
+                 if (nombre.equals("") || apellidos.equals("") || fech_nac.equals("") || user.equals("") || psswd.equals("") || psswd2.equals("")){
+                    tfNombre.setText("");
+                    tfApellidos.setText("");
+                    tfFechaNacimiento.setText("");
+                    tfContraseña.setText("");
+                    tfUsuario.setText("");
+                    tfContraseña2.setText("");
+                     JOptionPane.showMessageDialog(tfApellidos, "Rellena todos los campos.", "Error", 1);
+                } else if (!psswd.equals(psswd2)){
+                     tfNombre.setText("");
+                     tfApellidos.setText("");
+                     tfFechaNacimiento.setText("");
+                     tfContraseña.setText("");
+                     tfUsuario.setText("");
+                     tfContraseña2.setText("");
+                     JOptionPane.showMessageDialog(tfApellidos, "Las contraseñas no son iguales.", "Error", 1);
+                 }
+
+                 usuarios usuario = new usuarios(nombre, apellidos, user, psswd, fech_nac, "0");
+                 usuario.save();
             }
         });
     }
 
     public static void main(String[] args) {
-        JFrame frame = new JFrame("ventanaRegistrarse");
-        frame.setContentPane(new ventanaRegistrarse().panel2);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
     }
 }
