@@ -3,8 +3,6 @@ package com.flagship.ventanaRegistro;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import com.flagship.Conector;
 import com.flagship.usuarios.usuarios;
 
 public class ventanaRegistrarse {
@@ -23,10 +21,9 @@ public class ventanaRegistrarse {
     private JTextField tfApellidos;
     private JTextField tfFechaNacimiento;
     private JTextField tfUsuario;
+    private JButton btDevOptions;
 
     public ventanaRegistrarse() {
-
-
         btRegistrarse.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -36,7 +33,6 @@ public class ventanaRegistrarse {
                 String user = tfUsuario.getText();
                 String psswd = tfContraseña.getText();
                 String psswd2 = tfContraseña2.getText();
-
                  if (nombre.equals("") || apellidos.equals("") || fech_nac.equals("") || user.equals("") || psswd.equals("") || psswd2.equals("")){
                     tfNombre.setText("");
                     tfApellidos.setText("");
@@ -54,13 +50,18 @@ public class ventanaRegistrarse {
                      tfContraseña2.setText("");
                      JOptionPane.showMessageDialog(tfApellidos, "Las contraseñas no son iguales.", "Error", 1);
                  }
-
                  usuarios usuario = new usuarios(nombre, apellidos, user, psswd, fech_nac, "0");
                  usuario.save();
             }
         });
+
     }
 
     public static void main(String[] args) {
+
     }
+
+
+    //usuarios usuario = new usuarios("", "", "", "", "", "");
+    //usuario.delete();
 }
