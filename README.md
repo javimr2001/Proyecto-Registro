@@ -1,6 +1,5 @@
 # Proyecto-Registro
-Proyecto de aplicación basada en java para registro de inventario
-
+Proyecto de aplicación basada en java que simula una ventana de registro e inicio de sesión.
 
 
 ----------------------------------------------------------------------
